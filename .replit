@@ -1,5 +1,21 @@
+modules = ["nodejs-20"]
 [nix]
 channel = "stable-25_05"
+packages = ["uwhoisd"]
 
 [agent]
 expertMode = true
+
+[workflows]
+
+[[workflows.workflow]]
+name = "run index.js"
+mode = "sequential"
+author = 170199
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node index.js"
+
+[deployment]
+run = "node index.js"
